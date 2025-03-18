@@ -11,6 +11,13 @@ View the [website](https://waldo-blom.github.io/PRJ381/) here
 ## To Do list:
 ### Feel free to add the suggestions below
 
+### Overall changes required:
+- [ ] Make changes to the content as it is just basic discriptions
+- [ ] Add functionality
+- [ ] Find nice fonts to use
+- [ ] Change the overall colour scheme??
+
+
 ### First section:
 - [ ]  Suggestion
 
@@ -18,7 +25,7 @@ View the [website](https://waldo-blom.github.io/PRJ381/) here
 - [ ] Make a better transition from the first section to the about section
 
 ### Features section:
-- [ ] Suggestion
+- [ ] Add a glossy background effect to the cards (see the img folder for inspo)
 
 ### How it works section:
 - [ ] Make the boxes bigger relitive to the screen (change the layout to achieve this??)
@@ -27,4 +34,4 @@ View the [website](https://waldo-blom.github.io/PRJ381/) here
 - [ ] Suggestion
 
 ### Footer section:
-- [ ] Suggestion
+- [ ] The resize does not look good on medium size and small screens
