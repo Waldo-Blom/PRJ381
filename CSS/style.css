@@ -1,5 +1,7 @@
-
-    body {
+body {
         font-family: 'Inter', sans-serif;
     }
 
+.child-container {
+        border-radius: calc(3.5rem - 1px);
+      }
