@@ -8,8 +8,8 @@ body {
 
 /* Add to the div of choice to add a glow backdrop used at the how it works section) */
 .glow-backdrop {
-  box-shadow: 0 0 20px 4px rgba(47, 118, 225, 0.8),
-      0 0 40px 8px rgba(155, 65, 255, 0.5),
+  box-shadow: 0 0 20px 4px rgba(47, 118, 225, 0.4),
+      0 0 40px 8px rgba(155, 65, 255, 0.2),
       0 0 60px 12px rgba(98, 4, 135, 0.3);
 }
 
