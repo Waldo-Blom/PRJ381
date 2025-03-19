@@ -26,6 +26,7 @@ View the [website](https://waldo-blom.github.io/PRJ381/) here
 
 ### Features section:
 - [ ] Add a glossy background effect to the cards (see the img folder for inspo)
+- [ ] Fix the alignment (It should be the p tag under the h3 tag using flex col but if flex col is used it breaks the border if done)
 
 ### How it works section:
 - [ ] Make the boxes bigger relitive to the screen (change the layout to achieve this??)
