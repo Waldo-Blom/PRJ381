@@ -8,7 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+   
   
+   <!-- own css -->
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body class="bg-gray-900 text-white">
@@ -78,61 +83,102 @@
     </div>
 </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-gradient-to-b from-gray-900 via-zinc-900 to-black">
-        <div class="container mx-auto px-8">
-            <h2 class="text-3xl font-semibold text-center">Features</h2>
-            <div class="mt-8 flex flex-col md:flex-row justify-around items-center gap-4">
-                <!-- Card 1 -->
-                <div class="text-center max-w-md">
-                    <div class="h-45 w-full rounded-md bg-gradient-to-r from-blue-500 via-violet-500 to-purple-900 p-0.5">
-                      <div class="h-full w-full flex items-center justify-center bg-gray-800 rounded-md">
-                        <div class="text-center px-4">
-                            <h3 class="text-xl font-bold p-1">👋 Gesture Recognition</h3>
-                            <p class="mt-2 text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque doloribus commodi ea quasi quas laboriosam dolores, id omnis deleniti asperiores impedit quia perferendis temporibus libero eius necessitatibus quidem natus repudiandae.</p>
-                        </div>
-                      </div>
-                    </div>
+<!-- Features Section -->
+<section id="features" class="py-20 bg-gradient-to-b from-gray-900 via-zinc-900 to-black">
+    <div class="container mx-auto px-8">
+        <h2 class="text-3xl font-semibold text-center">Features</h2>
+        <div class="mt-8 flex flex-col md:flex-row justify-around items-center gap-4">
+             <!-- Card 1 -->
+            <div class="card bg-base-100 w-96 shadow-sm">
+                <figure class="px-10 pt-10">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    alt="Gesture Recognition"
+                    class="rounded-xl" />
+                </figure>
+                <div class="card-body items-center text-center">
+                  <h2 class="card-title text-2xl font-bold p-2">👋 Gesture Recognition</h2>
+                  <p class="text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque doloribus commodi ea quasi quas laboriosam dolores, id omnis deleniti asperiores impedit quia perferendis temporibus libero eius necessitatibus quidem natus repudiandae.</p>
+                  
                 </div>
-                  <!-- Card 2 -->
-                  <div class="text-center max-w-md">
-                    <div class="h-56 w-full rounded-md bg-gradient-to-r from-blue-500 via-violet-500 to-purple-900 p-0.5">
-                      <div class="flex h-full w-full items-center justify-center bg-gray-800 rounded-md">
-                        <div class="text-center px-4">
-                            <div class="text-center px-4">
-                                <h3 class="text-xl font-bold p-1">🤖 AI Translation</h3>
-                                <p class="mt-2 text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero rem commodi at excepturi repudiandae esse assumenda aliquam praesentium culpa placeat doloribus corporis enim voluptates voluptatem atque iure sunt, omnis eligendi.</p>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Card 3 -->
-                  <div class="text-center max-w-md">
-                    <div class="h-45 w-full rounded-md bg-gradient-to-r from-blue-500 via-violet-500 to-purple-900 p-0.5">
-                      <div class="flex h-full w-full items-center justify-center bg-gray-800 rounded-md">
-                        <div class="text-center px-4">
-                            <h3 class="text-xl font-bold p-1"> 🗣️ Text-to-Speech</h3>
-                            <p class="mt-2 text-gray-300">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores suscipit, esse sunt ipsum, nobis minima minus nulla sapiente voluptates iure fuga delectus, id molestiae. Esse, cumque adipisci? Ad, excepturi dignissimos.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </div>
+              </div>
+
+              <!-- Card 2 -->
+            <div class="card bg-base-100 w-96 shadow-sm">
+                <figure class="px-10 pt-10">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    alt="Shoes"
+                    class="rounded-xl" />
+                </figure>
+                <div class="card-body items-center text-center">
+                  <h2 class="card-title text-2xl font-bold p-2">🤖 AI Translation</h2>
+                  <p class="text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero rem commodi at excepturi repudiandae esse assumenda aliquam praesentium culpa placeat doloribus corporis enim voluptates voluptatem atque iure sunt, omnis eligendi.</p>
+                </div>
+              </div>
+            
+               <!-- Card 3 -->
+              <div class="card bg-base-100 w-96 shadow-sm">
+                <figure class="px-10 pt-10">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    alt="Shoes"
+                    class="rounded-xl" />
+                </figure>
+                <div class="card-body items-center text-center">
+                  <h2 class="card-title text-2xl font-bold p-2">🗣️ Text-to-Speech</h2>
+                  <p class="text-gray-300">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores suscipit, esse sunt ipsum, nobis minima minus nulla sapiente voluptates iure fuga delectus, id molestiae. Esse, cumque adipisci? Ad, excepturi dignissimos.</p>
+                </div>
+              </div>
+            
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- How it works section -->
      <section id="how-it-works" class=" py-20 bg-black">
         <div class="container mx-auto max-w-5xl px-10">
             <h2 class="text-3xl font-semibold text-center">How it works</h2>
             <p class="font-light text-lg text-center m-3" >Here is a demo preview of our project, for more information please see the <a class="text-blue-400" href="#" target="_blank">documentation</a> </p>
-            <div class="mt-8">
-                <div class="w-full h-96 border rounded-md glow-backdrop">
-                  <img class="h-full w-full object-cover rounded-md" src="images/ezgif-706a63821b2aee.webp" alt="This will be a video demo of our project (a webp file)">
+            <div class="carousel w-full">
+                <div id="slide1" class="carousel-item relative w-full active">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
+                    class="w-full rounded-md" />
+                  <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <button class="btn btn-circle carousel-prev bg-black p-1 rounded-full" data-target="slide4">❮</button>
+                    <button class="btn btn-circle carousel-next bg-black p-1 rounded-full" data-target="slide2">❯</button>
+                  </div>
                 </div>
-            </div>
-        </div>
+                <div id="slide2" class="carousel-item relative w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
+                    class="w-full rounded-md" />
+                  <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <button class="btn btn-circle carousel-prev bg-black p-1 rounded-full" data-target="slide1">❮</button>
+                    <button class="btn btn-circle carousel-next bg-black p-1 rounded-full" data-target="slide3">❯</button>
+                  </div>
+                </div>
+                <div id="slide3" class="carousel-item relative w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
+                    class="w-full rounded-md" />
+                  <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <button class="btn btn-circle carousel-prev bg-black p-1 rounded-full" data-target="slide2">❮</button>
+                    <button class="btn btn-circle carousel-next bg-black p-1 rounded-full" data-target="slide4">❯</button>
+                  </div>
+                </div>
+                <div id="slide4" class="carousel-item relative w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
+                    class="w-full rounded-md" />
+                  <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <button class="btn btn-circle carousel-prev bg-black p-1 rounded-full" data-target="slide3">❮</button>
+                    <button class="btn btn-circle carousel-next bg-black p-1 rounded-full" data-target="slide1">❯</button>
+                  </div>
+                </div>
+              </div>
      </section>
    
     <!-- Get Started Section -->
@@ -173,5 +219,6 @@
 
     <script src="JS/mobile-menu.js"></script>
     <script src="JS/footer-hide.js"></script>
+    <script src="JS/carousel.js"></script>
 </body>
 </html>
