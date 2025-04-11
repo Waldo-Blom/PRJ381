@@ -32,6 +32,7 @@ View the [website](https://waldo-blom.github.io/PRJ381/) here
 
 ### How it works section:
 - [ ] Make the boxes bigger relitive to the screen (change the layout to achieve this??)
+- [ ] Mobile resize is not usable (too small).
 
 ### Get started section:
 - [ ] Suggestion
