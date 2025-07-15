@@ -4,3 +4,4 @@ Updates needed:
 - [ ] Replace video with actual demo
 - [ ] Color changes
 - [ ] Add JS for animations
+- [ ] Fix the links routing on nav bar, hero section, get started section and footer
