@@ -12,6 +12,8 @@
     <!-- daisyui -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
    
+    <!-- icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
    <!-- own css -->
     <link rel="stylesheet" href="CSS/style.css">
@@ -128,59 +130,73 @@
         </div>
     </section>
 
-<section class="max-w-screen-xl mx-auto py-16 px-6 bg-black">
-  <h2 class="text-3xl font-bold text-center mb-2 text-purple-200">Our Features</h2>
-  <p class="text-center text-gray-300 mb-10">
-    Explore the core capabilities of our hand gesture recognition app.
-  </p>
-
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-    <!-- Side Cards (Left) -->
-    <div class="lg:col-span-1 grid grid-cols-1 gap-6">
-      <div class="bg-gray-800 rounded-lg p-6 border border-purple-700 shadow-lg">
-        <h3 class="text-purple-300 text-xl font-semibold mb-2">Real-time Recognition</h3>
-        <p class="text-gray-300">
-          Instantly detect hand gestures using advanced real‑time processing.
-        </p>
-      </div>
-      <div class="bg-gray-800 rounded-lg p-6 border border-purple-700 shadow-lg">
-        <h3 class="text-purple-300 text-xl font-semibold mb-2">AI Enhanced Detection</h3>
-        <p class="text-gray-300">
-          Benefit from artificial intelligence that sharpens gesture detection accuracy.
-        </p>
-      </div>
-    </div>
-    
-    <!-- Featured Item (Center) -->
-    <div class="lg:col-span-1">
-      <div class="bg-gradient-to-b from-purple-900 to-gray-800 rounded-lg p-6 border border-purple-500 shadow-lg h-full flex flex-col items-center justify-center">
-        <div class="h-20 w-20 bg-purple-700 mb-4 flex items-center justify-center">
-        <img src="" alt="">
+     <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Features our Application offers</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                   SignSpeak AI makes use of technology to allow for a simple, friendly design to make chatting feel natural and easy.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Real-Time Translation</h3>
+                    <p class="text-gray-600">
+                        Instantly converts sign language gestures to spoken words with minimal latency for natural conversations.
+                    </p>
+                </div>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-brain text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Advanced AI</h3>
+                    <p class="text-gray-600">
+                        Powered by deep learning models trained on diverse datasets for high accuracy across different users.
+                    </p>
+                </div>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Multi-Platform</h3>
+                    <p class="text-gray-600">
+                        Works on desktop and mobile devices, making communication accessible anywhere, anytime.
+                    </p>
+                </div>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-sliders-h text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Customizable</h3>
+                    <p class="text-gray-600">
+                        Adjustable settings for speech rate, volume, and user type settings.
+                    </p>
+                </div>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-lightbulb text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Intuitive Interface</h3>
+                    <p class="text-gray-600">
+                        Simple, clean design focused on accessibility for users of all technical abilities.
+                    </p>
+                </div>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
+                         <i class="fas fa-bookmark text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Quick Phrase Storage</h3>
+                     <p class="text-gray-600">
+                        Save your most frequently used phrases and access them instantly from the storage screen for faster communication.
+                    </p>
+                </div>
+            </div>
         </div>
-        <h3 class="text-purple-200 text-2xl font-bold mb-2 text-center">TSS Conversion</h3>
-        <p class="text-gray-300 text-center">
-          Convert gestures into speech effortlessly using our integrated system.
-        </p>
-      </div>
-    </div>
-    
-    <!-- Side Cards (Right) -->
-    <div class="lg:col-span-1 grid grid-cols-1 gap-6">
-      <div class="bg-gray-800 rounded-lg p-6 border border-purple-700 shadow-lg">
-        <h3 class="text-purple-300 text-xl font-semibold mb-2">User-Centric Design</h3>
-        <p class="text-gray-300">
-          Enjoy a meticulously crafted interface that ensures seamless user interaction and accessibility.
-        </p>
-      </div>
-      <div class="bg-gray-800 rounded-lg p-6 border border-purple-700 shadow-lg">
-        <h3 class="text-purple-300 text-xl font-semibold mb-2">Lorem</h3>
-        <p class="text-gray-300">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
    
     <!-- Get Started Section -->
     <section class="py-20 text-center bg-gradient-to-b from-black via-zinc-900 to-purple-900">
