@@ -1,4 +1,10 @@
 
+/* Root-level variables for dynamic spacing */
+:root {
+    --nav-height: 64px;           
+    --mobile-menu-height: 0px;    
+}
+
 body {
         font-family: 'Inter', sans-serif;
         background: radial-gradient(ellipse at center, 
@@ -43,7 +49,7 @@ body {
 
 /* Mobile-correct hero height using small viewport unit */
 .svh-hero {
-    min-height: 100svh; /* accounts for mobile browser UI chrome */
+    min-height: 100svh;
 }
 
 /* Safe-area aware bottom spacing utility for scroll indicator */
@@ -54,6 +60,11 @@ body {
 /* Smooth scroll behavior for anchor links */
 html {
     scroll-behavior: smooth;
+}
+
+/* Ensure anchor targets aren't hidden behind fixed nav on mobile */
+[id] {
+    scroll-margin-top: calc(var(--nav-height) + var(--mobile-menu-height));
 }
 
 /* Slow bounce animation for scroll cue */
@@ -92,7 +103,7 @@ html {
 
     /* Mobile menu items */
     #mobile-menu a {
-        color: #e5e7eb; /* tailwind gray-200 */
+        color: #e5e7eb; 
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         background: linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.02));
         transition: background 200ms ease, color 200ms ease, box-shadow 200ms ease;
@@ -276,15 +287,15 @@ html {
 
         /* Footer contributors: force one name per line */
         footer .name-group {
-            flex-direction: column; /* stack vertically */
-            gap: 0.5rem; /* vertical spacing between names */
+            flex-direction: column; 
+            gap: 0.5rem;
         }
 
         footer .name-group a,
         footer .name-group button,
         footer .name-group label {
             width: 100%;
-            display: block; /* ensure each occupies its own line */
+            display: block; 
             text-align: left;
         }
 
@@ -307,28 +318,45 @@ html {
         /* default state on mobile: extra names hidden, show 'see more' */
         .footer-contributors .toggle-more,
         .footer-contributors .toggle-less {
-            display: none; /* hidden by default, enabled via media query */
+            display: none; 
         }
         .footer-contributors .contributors-extra {
-            display: block; /* desktop default; overridden on mobile */
+            display: block; /
         }
 
         /* Mobile behavior */
         @media (max-width: 767px) {
+            /* Fit hero within viewport below fixed nav + menu so arrow stays visible */
+            .svh-hero {
+                min-height: calc(100svh - var(--nav-height) - var(--mobile-menu-height));
+            }
+
+            .svh-hero .scroll-indicator {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: max(16px, env(safe-area-inset-bottom));
+                margin-top: 0 !important; 
+            }
+
+            body {
+                padding-top: calc(var(--nav-height) + var(--mobile-menu-height));
+            }
+
             .footer-contributors .contributors-extra {
-                display: none; /* collapsed by default on mobile */
+                display: none; 
             }
             .footer-contributors .toggle-more {
-                display: inline-block; /* show 'see more' under first group */
+                display: inline-block; 
             }
             .contributors-toggle:checked ~ .grid .contributors-extra {
-                display: block; /* expanded state shows extra names */
+                display: block; 
             }
             .contributors-toggle:checked ~ .grid .name-group .toggle-more {
-                display: none; /* hide 'see more' when expanded */
+                display: none;
             }
             .contributors-toggle:checked ~ .grid .contributors-extra .toggle-less {
-                display: inline-block; /* show 'hide names' at bottom */
+                display: inline-block; 
             }
         }
 
