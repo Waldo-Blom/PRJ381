@@ -41,6 +41,21 @@ body {
       0 0 60px 12px rgba(173, 216, 230, 0.3);
 }
 
+/* Smooth scroll behavior for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Slow bounce animation for scroll cue */
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+.animate-bounce-slow {
+    animation: bounce-slow 1.6s infinite ease-in-out;
+}
+
     /* Mobile glass dropdown */
     .mobile-glass {
         background: rgba(15, 15, 20, 0.35);
