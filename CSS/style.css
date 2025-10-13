@@ -41,6 +41,16 @@ body {
       0 0 60px 12px rgba(173, 216, 230, 0.3);
 }
 
+/* Mobile-correct hero height using small viewport unit */
+.svh-hero {
+    min-height: 100svh; /* accounts for mobile browser UI chrome */
+}
+
+/* Safe-area aware bottom spacing utility for scroll indicator */
+.safe-bottom {
+    bottom: max(12px, env(safe-area-inset-bottom));
+}
+
 /* Smooth scroll behavior for anchor links */
 html {
     scroll-behavior: smooth;
