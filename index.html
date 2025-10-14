@@ -91,7 +91,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">How Sign-Speak AI Works</h2>
                 <div class="w-20 h-1 bg-[#87ceeb] mx-auto mb-6"></div>
-                <p class="text-gray-400 max-w-2xl mx-auto">Our advanced architecture combines real-time computer vision with a <a href="https://machinelearningmastery.com/cnn-long-short-term-memory-networks/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">CNN-LSTM</a> Model to provide South African Sign Language translation to both text and speech.</p>
+                <p class="text-gray-400 max-w-2xl mx-auto">Our architecture combines real-time computer vision with a <a href="https://machinelearningmastery.com/cnn-long-short-term-memory-networks/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">CNN-LSTM</a> Model to provide South African Sign Language translation to both text and speech output formats.</p>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
@@ -101,7 +101,7 @@
                         <div class="flex-shrink-0 bg-black text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-6 shadow-lg group-hover:scale-110 transition-transform duration-300">1</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-3 text-white">Camera Capture & WebSocket Transmission</h3>
-                            <p class="text-gray-400 leading-relaxed">Camera captures real-time video frames which are sent via <a href="https://developer.mozilla.org/docs/Web/API/WebSockets_API" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">WebSocket</a> to the processing servers for gesture detection and analysis.</p>
+                            <p class="text-gray-400 leading-relaxed">Camera captures real-time video frames which are sent via <a href="https://developer.mozilla.org/docs/Web/API/WebSockets_API" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">WebSocket</a> to the <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Flask</a> server for gesture detection and analysis.</p>
                             <div class="mt-3 flex space-x-2">
                                 <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">WebRTC</span>
                                 <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">WebSocket</span>
@@ -113,7 +113,7 @@
                         <div class="flex-shrink-0 bg-black text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-6 shadow-lg group-hover:scale-110 transition-transform duration-300">2</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-3 text-white">Flask AI Model Detection</h3>
-                            <p class="text-gray-400 leading-relaxed">Image frames sent to <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Flask</a> server where <a href="https://machinelearningmastery.com/cnn-long-short-term-memory-networks/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">CNN-LSTM</a> <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">PyTorch</a> model that  processes 16-frame sequences to detect South African Sign Language.</p>
+                            <p class="text-gray-400 leading-relaxed">Image frames are received by the <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Flask</a> server where a <a href="https://machinelearningmastery.com/cnn-long-short-term-memory-networks/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">CNN-LSTM</a> <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">PyTorch</a> model processes 16-frame sequences in order to detect South African Sign Language.</p>
                             <div class="mt-3 flex space-x-2">
                                 <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">Flask</span>
                                 <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">PyTorch</span>
@@ -128,7 +128,7 @@
                             <h3 class="text-xl font-semibold mb-3 text-white">Grammar Correction & JSON Response</h3>
                             <p class="text-gray-400 leading-relaxed"><a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Flask</a> server applies grammar correction to detected phrase list and sends structured <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">JSON</a> data back through <a href="https://developer.mozilla.org/docs/Web/API/WebSockets_API" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">WebSocket</a> to <a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Express.js</a> server.</p>
                             <div class="mt-3 flex space-x-2">
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">Grammar AI</span>
+                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">Grammar correction</span>
                                 <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">JSON</span>
                                 <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">WebSocket</span>
                             </div>
@@ -224,7 +224,7 @@
     <section id="TrySignSpeak" class="py-12 text-center" style="background: rgba(0, 0, 0, 0.3);">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-semibold mb-4">Ready to try our application in real time?</h2>
-            <p class="text-gray-400 mb-6 max-w-2xl mx-auto">Access our live demo hosted on Belgium Campus servers. Experience advanced AI-powered sign language recognition with real-time speech synthesis.</p>
+            <p class="text-gray-400 mb-6 max-w-2xl mx-auto">Access our live demo hosted on Belgium Campus servers. Experience AI-powered sign language recognition with real-time speech synthesis.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="http://test.belgiumcampus.ac.za:8001" target="_blank" class="px-8 py-4 purple-gradient-btn rounded-lg font-semibold">Launch Live Demo</a>
                 <p class="text-sm text-gray-500">Hosted at: 
@@ -316,7 +316,7 @@
                     <div class="space-y-4">
                         <div class="text-gray-300">
                             <p class="font-medium text-center mb-2">Zoë Janse van Rensburg</p>
-                            <p class="text-sm text-gray-400 text-center">Created and managed the back-end infrastructure</p>
+                            <p class="text-sm text-gray-400 text-center">Created and managed the back-end infrastructure.</p>
                         </div>
                         <div class="text-gray-300">
                             <p class="font-medium text-center mb-2">Willem Booysen</p>
@@ -342,7 +342,7 @@
                         </div>
                         <div class="text-gray-300">
                             <p class="font-medium text-center mb-2">Zanthus Van deventer</p>
-                            <p class="text-sm text-gray-400 text-center">Project manager. Created user storage phrases.</p>
+                            <p class="text-sm text-gray-400 text-center">Project manager for the team. Created user storage phrases page.</p>
                         </div>
                     </div>
                 </div>
@@ -358,16 +358,16 @@
                             <p class="text-sm text-gray-400 text-center">Advisor for anything regarding South African Sign language</p>
                         </div>
                         <div class="text-gray-300">
-                            <p class="font-medium text-center mb-2">???</p>
-                            <p class="text-sm text-gray-400 text-center">Contribution description goes here</p>
+                            <p class="font-medium text-center mb-2">Vunene Khoza</p>
+                            <p class="text-sm text-gray-400 text-center">Project research</p>
                         </div>
                         <div class="text-gray-300">
-                            <p class="font-medium text-center mb-2">???</p>
-                            <p class="text-sm text-gray-400 text-center">Contribution description goes here</p>
+                            <p class="font-medium text-center mb-2">Yandile Ngubane</p>
+                            <p class="text-sm text-gray-400 text-center">Project research</p>
                         </div>
                         <div class="text-gray-300">
-                            <p class="font-medium text-center mb-2">????</p>
-                            <p class="text-sm text-gray-400 text-center">Contribution description goes here</p>
+                            <p class="font-medium text-center mb-2">Yanga Mazibuko</p>
+                            <p class="text-sm text-gray-400 text-center">Project research</p>
                         </div>
                     </div>
                 </div>
