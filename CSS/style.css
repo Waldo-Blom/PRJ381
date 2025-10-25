@@ -380,7 +380,9 @@ html {
                 bottom: max(16px, env(safe-area-inset-bottom));
                 margin-top: 0 !important; 
                 z-index: 50; 
-                pointer-events: none; 
+                pointer-events: auto;
+                opacity: 1;
+                transition: opacity 0.3s ease;
             }
             .svh-hero .scroll-indicator a { pointer-events: auto; }
 
