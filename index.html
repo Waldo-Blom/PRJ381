@@ -24,6 +24,7 @@
         <div class="container mx-auto flex justify-between items-center">
         <div class="text-2xl font-bold text-white">SignSpeak AI</div>
         <div class="hidden md:flex space-x-4">
+            <a href="#model-explanation" class="transition">AI Models</a>
             <a href="#how-it-works" class="transition">About</a>
             <a href="#TrySignSpeak" class="transition">Try SignSpeak AI</a>
             <a href="#tech" class="transition">Tech Stack</a>
@@ -55,6 +56,7 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden mobile-glass absolute top-full left-0 w-full z-20 rounded-b-xl overflow-hidden">
+        <a href="#model-explanation" class="block py-2 px-4">AI Models</a>
         <a href="#how-it-works" class="block py-2 px-4">About</a>
         <a href="#TrySignSpeak" class="block py-2 px-4">Try SignSpeak AI</a>
         <a href="#tech" class="block py-2 px-4">Tech Stack</a>
@@ -101,12 +103,118 @@
         </div>
     </section>
 
+    <!-- Model Explanation Section -->
+    <section id="model-explanation" class="py-20 px-4" style="background: rgba(0, 0, 0, 0.3);">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Our AI Models</h2>
+                <div class="w-20 h-1 bg-[#87ceeb] mx-auto mb-6"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Learn about the two machine learning models powering Sign-Speak AI.</p>
+            </div>
+
+            <!-- Model Tabs -->
+            <div class="flex flex-row justify-center gap-4 mb-8">
+                <button id="tab-random-forest" class="model-tab model-tab-active px-6 py-3 rounded-lg font-medium transition-all">
+                    <span class="sm:hidden">Random Forest</span>
+                    <span class="hidden sm:inline">Hand Landmark Recognition (Random Forest)</span>
+                </button>
+                <button id="tab-cnn-lstm" class="model-tab px-6 py-3 rounded-lg font-medium transition-all">
+                    <span class="sm:hidden">Video Based</span>
+                    <span class="hidden sm:inline">Video-Based CNN + LSTM</span>
+                </button>
+            </div>
+
+            <!-- Model Content -->
+                <div id="content-random-forest" class="model-content bg-black bg-opacity-40 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
+                <h3 class="text-2xl font-bold text-white mb-4">Hand Landmark Recognition Model (Random Forest)</h3>
+                <p class="text-white text-lg mb-6"><strong>Goal:</strong> Recognize static or simple gestures using 3D hand landmark coordinates.</p>
+
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold text-white mb-3">How It Works:</h4>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Feature Extraction:</strong> Uses <a href="https://developers.google.com/mediapipe/solutions/vision/hand_landmarker" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">MediaPipe Hands</a> to detect 21 landmarks per hand (x, y, z → 63 features per hand).</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Data Representation:</strong> Landmarks are stored in a CSV file; each row represents one gesture sample with its label (e.g., "A", "B", "1").</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Model Training:</strong> Trains a <a href="https://scikit-learn.org/stable/modules/ensemble.html#random-forests" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">Random Forest classifier</a> (200 trees) on the landmark data to learn geometric patterns.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Recognition:</strong> Captures real-time landmarks, scales features, and predicts the gesture using the trained model with <a href="https://en.wikipedia.org/wiki/Temporal_anti-aliasing" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">temporal smoothing</a> for stability.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Key Strengths:</h4>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Lightweight & Fast:</strong> Runs on CPU. </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">High Accuracy:</strong> 90–97% for static gestures</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Efficient:</strong> Low storage & quick retraining</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>            <div id="content-cnn-lstm" class="model-content hidden bg-black bg-opacity-40 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
+                <h3 class="text-2xl font-bold text-white mb-4">Video-Based CNN + LSTM Model (Deep Learning)</h3>
+                <p class="text-white text-lg mb-6"><strong>Goal:</strong> Recognize dynamic signs that involve motion and temporal changes.</p>
+
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold text-white mb-3">How It Works:</h4>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Input Data:</strong> Uses short 3–5 second video clips (≈30 frames, resized to 224×224).</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Feature Extraction:</strong> <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/EfficientNetB0" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">EfficientNet-B0</a> extracts spatial features (hand shape, orientation, facial cues).</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Temporal Modeling:</strong> Features are passed through a <a href="https://en.wikipedia.org/wiki/Bidirectional_recurrent_neural_networks" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">Bidirectional LSTM</a> to learn motion and time-based patterns.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Classification:</strong> LSTM outputs go through dense layers to predict the gesture class.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Training:</strong> Uses <a href="https://en.wikipedia.org/wiki/Transfer_learning" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">transfer learning</a> (frozen EfficientNet backbone), <a href="https://www.geeksforgeeks.org/deep-learning/adam-optimizer/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">Adam optimizer</a>, and <a href="https://en.wikipedia.org/wiki/Data_augmentation" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">data augmentation</a> (rotation, brightness, flipping).</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#87ceeb] mr-2">•</span>
+                                <div><strong class="text-white">Recognition:</strong> Processes live video input → <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">CNN</a> → <a href="https://en.wikipedia.org/wiki/Long_short-term_memory" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">LSTM</a> → gesture prediction with smoothing for stability.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="how-it-works" class="py-20 px-4" style="background: rgba(0, 0, 0, 0.4);">
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">How Sign-Speak AI Works</h2>
                 <div class="w-20 h-1 bg-[#87ceeb] mx-auto mb-6"></div>
-                <p class="text-gray-400 max-w-2xl mx-auto">Our architecture combines real-time computer vision with a <a href="https://machinelearningmastery.com/cnn-long-short-term-memory-networks/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">CNN-LSTM</a> Model to provide South African Sign Language translation to both text and speech output formats.</p>
+                <p class="text-gray-400 max-w-2xl mx-auto">Our architecture combines real-time computer vision with our AI models to provide South African Sign Language translation to both text and speech output formats.</p>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
@@ -116,10 +224,10 @@
                         <div class="flex-shrink-0 bg-black text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-6 shadow-lg group-hover:scale-110 transition-transform duration-300">1</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-3 text-white">Camera Capture & WebSocket Transmission</h3>
-                            <p class="text-gray-400 leading-relaxed">Camera captures real-time video frames which are sent via <a href="https://developer.mozilla.org/docs/Web/API/WebSockets_API" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">WebSocket</a> to the <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Flask</a> server for gesture detection and analysis.</p>
+                            <p class="text-gray-400 leading-relaxed">Camera captures real-time video frames which are sent via <a href="https://developer.mozilla.org/docs/Web/API/WebSockets_API" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">WebSocket</a> to the <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">Flask</a> server for gesture detection and analysis.</p>
                             <div class="mt-3 flex space-x-2">
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">WebRTC</span>
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">WebSocket</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">WebRTC</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">WebSocket</span>
                             </div>
                         </div>
                     </div>
@@ -128,11 +236,11 @@
                         <div class="flex-shrink-0 bg-black text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-6 shadow-lg group-hover:scale-110 transition-transform duration-300">2</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-3 text-white">Flask AI Model Detection</h3>
-                            <p class="text-gray-400 leading-relaxed">Image frames are received by the <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Flask</a> server where a <a href="https://machinelearningmastery.com/cnn-long-short-term-memory-networks/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">CNN-LSTM</a> <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">PyTorch</a> model processes 16-frame sequences in order to detect South African Sign Language.</p>
+                            <p class="text-gray-400 leading-relaxed">Image frames are received by the <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">Flask</a> server where one of our AI models (depending on chosen user option) processes the frame sequences in order to detect South African Sign Language.</p>
                             <div class="mt-3 flex space-x-2">
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">Flask</span>
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">PyTorch</span>
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">CNN-LSTM</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">Flask</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">PyTorch</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">CNN-LSTM</span>
                             </div>
                         </div>
                     </div>
@@ -141,11 +249,11 @@
                         <div class="flex-shrink-0 bg-black text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-6 shadow-lg group-hover:scale-110 transition-transform duration-300">3</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-3 text-white">Grammar Correction & JSON Response</h3>
-                            <p class="text-gray-400 leading-relaxed"><a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Flask</a> server applies grammar correction to detected phrase list and sends structured <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">JSON</a> data back through <a href="https://developer.mozilla.org/docs/Web/API/WebSockets_API" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">WebSocket</a> to <a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Express.js</a> server.</p>
+                            <p class="text-gray-400 leading-relaxed"><a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">Flask</a> server applies grammar correction to detected phrase list and sends structured <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">JSON</a> data back through <a href="https://developer.mozilla.org/docs/Web/API/WebSockets_API" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">WebSocket</a> to <a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">Express.js</a> server.</p>
                             <div class="mt-3 flex space-x-2">
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">Grammar correction</span>
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">JSON</span>
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">WebSocket</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">Grammar correction</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">JSON</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">WebSocket</span>
                             </div>
                         </div>
                     </div>
@@ -154,11 +262,11 @@
                         <div class="flex-shrink-0 bg-black text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-6 shadow-lg group-hover:scale-110 transition-transform duration-300">4</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-semibold mb-3 text-white">Text Display & Audio Playback</h3>
-                            <p class="text-gray-400 leading-relaxed"><a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">Express.js</a> server displays detected text to user interface. When user clicks play, <a href="https://pyttsx3.readthedocs.io/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">pyttsx3</a> generates and streams audio playback of the phrase.</p>
+                            <p class="text-gray-400 leading-relaxed"><a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">Express.js</a> server displays detected text to user interface. When user clicks play, <a href="https://pyttsx3.readthedocs.io/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">pyttsx3</a> generates and streams audio playback of the phrase.</p>
                             <div class="mt-3 flex space-x-2">
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">Express.js</span>
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">pyttsx3</span>
-                                <span class="px-3 py-1 bg-pink-900 bg-opacity-50 text-pink-300 text-xs rounded-full">User Control</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">Express.js</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">pyttsx3</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-50 text-[#87ceeb] text-xs rounded-full">User Control</span>
                             </div>
                         </div>
                     </div>
@@ -167,63 +275,63 @@
                 <!-- Visual Representation -->
                 <div class="flex flex-col justify-center h-full">
                     <!-- Architecture Diagram -->
-                    <div class="w-full max-w-sm bg-black bg-opacity-40 backdrop-blur-sm rounded-2xl p-6 border border-pink-500 border-opacity-30 mx-auto">
+                    <div class="w-full max-w-sm bg-black bg-opacity-40 backdrop-blur-sm rounded-2xl p-6 border border-[#87ceeb] border-opacity-30 mx-auto">
                         <h4 class="text-center text-white font-semibold mb-6 text-lg">Data Flow Architecture</h4>
-                        
+
                         <!-- Camera Input -->
                         <div class="text-center mb-4">
                             <h3 class="text-white text-base font-bold">Camera Capture</h3>
                             <p class="text-gray-300 text-xs mt-1">WebRTC Video Stream</p>
                         </div>
-                        
+
                         <!-- Arrow Down -->
                         <div class="flex justify-center items-center mb-4">
                             <div class="flex flex-col items-center">
-                                <i class="fas fa-arrow-down text-pink-400 text-lg"></i>
-                                <span class="text-xs text-pink-300">WebSocket</span>
+                                <i class="fas fa-arrow-down text-blue-300 text-lg"></i>
+                                <span class="text-xs text-blue-300">WebSocket</span>
                             </div>
                         </div>
-                        
+
                         <!-- Flask AI Processing -->
                         <div class="text-center mb-4">
                             <h3 class="text-white text-base font-bold">AI Model Processing</h3>
-                            <p class="text-gray-300 text-xs mt-1">Using our <a href="https://machinelearningmastery.com/cnn-long-short-term-memory-networks/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">CNN-LSTM</a> Model</p>
+                            <p class="text-gray-300 text-xs mt-1">Using one of our AI Models</p>
                         </div>
-                        
+
                         <!-- Grammar Processing -->
                         <div class="text-center mb-4">
                             <h3 class="text-white text-base font-bold">Grammar Check</h3>
                             <p class="text-gray-300 text-xs mt-1">Text Correction</p>
                         </div>
-                        
+
                         <!-- Arrow Down -->
                         <div class="flex justify-center items-center mb-4">
                             <div class="flex flex-col items-center">
-                                <i class="fas fa-arrow-down text-pink-400 text-lg"></i>
-                                <span class="text-xs text-pink-300">JSON Response</span>
+                                <i class="fas fa-arrow-down text-blue-300 text-lg"></i>
+                                <span class="text-xs text-blue-300">JSON Response</span>
                             </div>
                         </div>
-                        
+
                         <!-- Express.js Server -->
                         <div class="text-center mb-4">
                             <h3 class="text-white text-base font-bold">Web Server</h3>
                             <p class="text-gray-300 text-xs mt-1">Express.js Backend</p>
                         </div>
-                        
+
                         <!-- Text Display -->
                         <div class="text-center mb-4">
                             <h3 class="text-white text-base font-bold">Text Displayed</h3>
                             <p class="text-gray-300 text-xs mt-1">On User Interface</p>
                         </div>
-                        
+
                         <!-- User Action Arrow -->
                         <div class="flex justify-center items-center mb-4">
                             <div class="flex flex-col items-center">
-                                <span class="text-xs text-pink-300">User Clicks</span>
-                                <i class="fas fa-arrow-down text-pink-400 text-lg"></i>
+                                <span class="text-xs text-blue-300">User Clicks</span>
+                                <i class="fas fa-arrow-down text-blue-300 text-lg"></i>
                             </div>
                         </div>
-                        
+
                         <!-- Audio Output -->
                         <div class="text-center">
                             <h3 class="text-white text-base font-bold">Audio Output</h3>
@@ -242,8 +350,8 @@
             <p class="text-gray-400 mb-6 max-w-2xl mx-auto">Access our live demo hosted on Belgium Campus servers. Experience AI-powered sign language recognition with real-time speech synthesis.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="https://ssai.belgiumcampus.ac.za/" target="_blank" class="px-8 py-4 purple-gradient-btn rounded-lg font-semibold">Launch Live Demo</a>
-                <p class="text-sm text-gray-500">Hosted at: 
-                    <a href="https://ssai.belgiumcampus.ac.za/" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">https://ssai.belgiumcampus.ac.za/</a>
+                <p class="text-sm text-gray-500">Hosted at:
+                    <a href="https://ssai.belgiumcampus.ac.za/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline hover:text-[#87ceeb]">https://ssai.belgiumcampus.ac.za/</a>
                 </p>
             </div>
         </div>
@@ -253,42 +361,42 @@
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl font-bold mb-16 text-center text-white">Technology Stack</h2>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
-                <a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" title="Learn more about Node.js and Express" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" title="Learn more about Node.js and Express" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-16 h-16 mb-4" alt="Node.js">
                     <h3 class="font-semibold text-white">Node.js + Express</h3>
                     <p class="text-sm text-gray-400 mt-2 text-center">Web server with JWT authentication</p>
                 </a>
-                <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" title="Learn more about Flask (Python web framework)" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer" title="Learn more about Flask (Python web framework)" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-16 h-16 mb-4" alt="Python">
                     <h3 class="font-semibold text-white">Python + Flask</h3>
                     <p class="text-sm text-gray-400 mt-2 text-center">AI model that processes data on the server using PyTorch</p>
                 </a>
-                <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer" title="Learn more about PyTorch" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer" title="Learn more about PyTorch" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" class="w-16 h-16 mb-4" alt="PyTorch">
                     <h3 class="font-semibold text-white">PyTorch</h3>
                     <p class="text-sm text-gray-400 mt-2 text-center">Using CNN-LSTM neural networks</p>
                 </a>
-                <a href="https://developers.google.com/mediapipe" target="_blank" rel="noopener noreferrer" title="Learn more about MediaPipe" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <a href="https://developers.google.com/mediapipe" target="_blank" rel="noopener noreferrer" title="Learn more about MediaPipe" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <img src="https://mediapipe.dev/images/mediapipe_small.png" class="w-16 h-16 mb-4 object-contain" alt="MediaPipe">
                     <h3 class="font-semibold text-white">MediaPipe</h3>
                     <p class="text-sm text-gray-400 mt-2 text-center">That applies 21-point hand landmark detection</p>
                 </a>
-                <a href="https://www.mongodb.com/docs/" target="_blank" rel="noopener noreferrer" title="Learn more about MongoDB" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <a href="https://www.mongodb.com/docs/" target="_blank" rel="noopener noreferrer" title="Learn more about MongoDB" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="w-16 h-16 mb-4" alt="MongoDB">
                     <h3 class="font-semibold text-white">MongoDB</h3>
                     <p class="text-sm text-gray-400 mt-2 text-center">Used for user data and phrase storage</p>
                 </a>
-                <a href="https://developer.mozilla.org/docs/Web/API/WebSockets_API" target="_blank" rel="noopener noreferrer" title="Learn more about WebSockets" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <a href="https://developer.mozilla.org/docs/Web/API/WebSockets_API" target="_blank" rel="noopener noreferrer" title="Learn more about WebSockets" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <i class="fas fa-network-wired text-4xl text-sky-400 mb-4"></i>
                     <h3 class="font-semibold text-white">WebSocket</h3>
                     <p class="text-sm text-gray-400 mt-2 text-center">That allows real-time frame processing</p>
                 </a>
-                <a href="https://developer.mozilla.org/docs/Web/API/WebRTC_API" target="_blank" rel="noopener noreferrer" title="Learn more about WebRTC and Canvas" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <a href="https://developer.mozilla.org/docs/Web/API/WebRTC_API" target="_blank" rel="noopener noreferrer" title="Learn more about WebRTC and Canvas" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-16 h-16 mb-4" alt="JavaScript">
                     <h3 class="font-semibold text-white">WebRTC + Canvas</h3>
                     <p class="text-sm text-gray-400 mt-2 text-center">That enables camera access and rendering</p>
                 </a>
-                <a href="https://pyttsx3.readthedocs.io/" target="_blank" rel="noopener noreferrer" title="Learn more about pyttsx3" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <a href="https://pyttsx3.readthedocs.io/" target="_blank" rel="noopener noreferrer" title="Learn more about pyttsx3" class="tech-icon flex flex-col items-center p-6 bg-black bg-opacity-30 rounded-lg border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <i class="fas fa-volume-up text-4xl text-white-400 mb-4"></i>
                     <h3 class="font-semibold text-white">pyttsx3 TTS</h3>
                     <p class="text-sm text-gray-400 mt-2 text-center">That enables text-to-speech synthesis</p>
@@ -303,7 +411,7 @@
             <h2 class="text-3xl font-bold mb-16 text-center text-white">Contributors</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- AI Model Department -->
-                <div class="contributor-department bg-black bg-opacity-40 rounded-lg p-6 border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <div class="contributor-department bg-black bg-opacity-40 rounded-lg p-6 border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <div class="flex flex-col items-center mb-6">
                         <h3 class="text-xl font-semibold text-white mb-4">AI Model</h3>
                     </div>
@@ -324,7 +432,7 @@
                 </div>
 
                 <!-- Back End / Hosting Department -->
-                <div class="contributor-department bg-black bg-opacity-40 rounded-lg p-6 border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <div class="contributor-department bg-black bg-opacity-40 rounded-lg p-6 border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <div class="flex flex-col items-center mb-6">
                         <h3 class="text-xl font-semibold text-white mb-4">Back End / Hosting</h3>
                     </div>
@@ -342,14 +450,14 @@
                 </div>
 
                 <!-- Front End Department -->
-                <div class="contributor-department bg-black bg-opacity-40 rounded-lg p-6 border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <div class="contributor-department bg-black bg-opacity-40 rounded-lg p-6 border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <div class="flex flex-col items-center mb-6">
                         <h3 class="text-xl font-semibold text-white mb-4">Front End</h3>
                     </div>
                     <div class="space-y-4">
                         <div class="text-gray-300">
                             <p class="font-medium text-center mb-2">Waldo Blom</p>
-                            <p class="text-sm text-gray-400 text-center">Integration of backend components with front-end interfaces (Websocket creation, TTS and camera). Designed UI of application and landing page.</p>
+                            <p class="text-sm text-gray-400 text-center">Integration of backend components with front-end interfaces (Websocket creation, TTS and camera). Designed UI of application and landing page. Created camera page.</p>
                         </div>
                         <div class="text-gray-300">
                             <p class="font-medium text-center mb-2">Willem Abraham Jacobus Kruger</p>
@@ -363,7 +471,7 @@
                 </div>
 
                 <!-- Research Department -->
-                <div class="contributor-department bg-black bg-opacity-40 rounded-lg p-6 border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <div class="contributor-department bg-black bg-opacity-40 rounded-lg p-6 border border-gray-700 hover:border-[#87ceeb] transition-all duration-300">
                     <div class="flex flex-col items-center mb-6">
                         <h3 class="text-xl font-semibold text-white mb-4">Research</h3>
                     </div>
@@ -414,16 +522,16 @@
                         A real-time SASL translation platform that bridges communication gaps using AI.            
                     </p>
                     <p class="text-sm text-gray-500 mt-2">
-                        Live Demo: <a href="https://ssai.belgiumcampus.ac.za/" class="text-pink-400 hover:text-blue-300" target="_blank">https://ssai.belgiumcampus.ac.za/</a>
+                        Live Demo: <a href="https://ssai.belgiumcampus.ac.za/" class="text-blue-300 hover:text-[#87ceeb]" target="_blank">https://ssai.belgiumcampus.ac.za/</a>
                     </p>
                 </div>
                 <div>
                     <h3 class="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">Product</h3>
                     <ul class="space-y-2">
-                        <li><a href="https://ssai.belgiumcampus.ac.za/" target="_blank" class="text-gray-400 hover:text-pink-400">Live Demo</a></li>
-                        <li><a href="#how-it-works" class="text-gray-400 hover:text-pink-400">About</a></li>
-                        <li><a href="https://github.com/DSReaper/Sign-Speak-AI" target="_blank" class="text-gray-400 hover:text-pink-400">GitHub Repository</a></li>
-                        <li><a href="#tech" class="text-gray-400 hover:text-pink-400">Technology Stack</a></li>
+                        <li><a href="https://ssai.belgiumcampus.ac.za/" target="_blank" class="text-gray-400 hover:text-[#87ceeb]">Live Demo</a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-[#87ceeb]">About</a></li>
+                        <li><a href="https://github.com/DSReaper/Sign-Speak-AI" target="_blank" class="text-gray-400 hover:text-[#87ceeb]">GitHub Repository</a></li>
+                        <li><a href="#tech" class="text-gray-400 hover:text-[#87ceeb]">Technology Stack</a></li>
                     </ul>
                 </div>
                 <div class="md:col-span-2">
@@ -434,12 +542,12 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <!-- Always-visible (first) group -->
                         <div class="flex flex-wrap gap-3 name-group">
-                            <a href="#" class="text-gray-400 hover:text-white transition">Zoë Janse van Rensburg</a>
-                            <a href="#" class="text-gray-400 hover:text-white transition">Zac Myburgh</a>
-                            <a href="#" class="text-gray-400 hover:text-white transition">Willem Abraham Jacobus Kruger</a>
-                            <a href="#" class="text-gray-400 hover:text-white transition">Willem Booysen</a>
-                            <a href="#" class="text-gray-400 hover:text-white transition">Zanthus Van deventer</a>
                             <a href="#" class="text-gray-400 hover:text-white transition">Waldo Blom</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Willem Booysen</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Joshua Clinton</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Vaughn du Preez</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Zoë Janse van Rensburg</a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Vunene Khoza</a>
                             <!-- Mobile-only: see more control under shortened list -->
                             <label for="contributors-toggle" class="toggle-more text-gray-400 hover:text-white transition cursor-pointer">...see more</label>
                         </div>
@@ -447,11 +555,11 @@
                         <!-- Extra names: hidden on mobile until expanded; always visible on desktop -->
                         <div class="contributors-extra">
                             <div class="flex flex-wrap gap-3 name-group">
-                                <a href="#" class="text-gray-400 hover:text-white transition">Joshua Clinton</a>
-                                <a href="#" class="text-gray-400 hover:text-white transition">Vunene Khoza</a>
-                                <a href="#" class="text-gray-400 hover:text-white transition">Yandile Ngubane</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition">Willem Abraham Jacobus Kruger</a>
                                 <a href="#" class="text-gray-400 hover:text-white transition">Yanga Mazibuko</a>
-                                <a href="#" class="text-gray-400 hover:text-white transition">Vaughn du Preez</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition">Zac Myburgh</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition">Yandile Ngubane</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition">Zanthus Van deventer</a>
                                 <!-- Mobile-only: hide names control at end of full list -->
                                 <label for="contributors-toggle" class="toggle-less text-gray-400 hover:text-white transition cursor-pointer">...hide names</label>
                             </div>
@@ -474,5 +582,6 @@
     <script src="JS/carousel.js"></script>
     <script src="JS/github-dropdown.js"></script>
     <script src="JS/scroll-indicator.js"></script>
+    <script src="JS/model-tabs.js"></script>
 </body>
 </html>
